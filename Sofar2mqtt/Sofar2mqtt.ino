@@ -324,31 +324,64 @@ static struct mqtt_status_register  mqtt_status_reads[] =
   { ME3000, SOFAR_REG_BATT_PWR, "battery_power2", NOCALC, 0 },
   { ME3000, SOFAR_REG_INTTEMP, "inverter_temp", NOCALC, 1 },
   { ME3000, SOFAR_REG_HSTEMP, "inverter_HStemp", NOCALC, 1 },
-  { HYBRID, SOFAR_REG_RUNSTATE, "running_state", NOCALC , 1 },
-  { HYBRID, SOFAR_REG_GRIDV, "grid_voltage", DIV10 , 1 },
-  { HYBRID, SOFAR_REG_GRIDA, "grid_current", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_GRIDFREQ, "grid_freq", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_GRIDW, "grid_power", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_BATTW, "battery_power", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_BATTV, "battery_voltage", DIV10 , 1 },
-  { HYBRID, SOFAR_REG_BATTA, "battery_current", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_SYSIOW, "inverter_power", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_BATTSOC, "batterySOC", NOCALC , 1 },
-  { HYBRID, SOFAR_REG_BATTTEMP, "battery_temp", NOCALC , 1 },
-  { HYBRID, SOFAR_REG_BATTCYC, "battery_cycles", NOCALC , 1 },
-  { HYBRID, SOFAR_REG_LOADW, "consumption", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_PVW, "solarPV", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_PVA, "solarPVAmps", NOCALC , 1 },
-  { HYBRID, SOFAR_REG_PV1, "solarPV1", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_PV2, "solarPV2", MUL10 , 1 },
-  { HYBRID, SOFAR_REG_PVDAY, "today_generation", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_LOADDAY, "today_consumption", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_EXPDAY, "today_exported", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_IMPDAY, "today_purchase", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_CHARGDAY, "today_charged", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_DISCHDAY, "today_discharged", DIV100 , 1 },
-  { HYBRID, SOFAR_REG_INTTEMP, "inverter_temp", NOCALC , 1 },
-  { HYBRID, SOFAR_REG_HSTEMP, "inverter_HStemp", NOCALC , 1 },
+  { HYBRID, SOFAR_REG_RUNSTATE, "running_state", NOCALC, 1 },
+  { HYBRID, SOLAR_REG_FAULT_LIST_1, "fault_list_1", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_FAULT_LIST_2, "fault_list_2", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_FAULT_LIST_3, "fault_list_3", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_FAULT_LIST_4, "fault_list_4", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_FAULT_LIST_5, "fault_list_5", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDV, "grid_voltage", DIV10, 1 },
+  { HYBRID, SOFAR_REG_GRIDA, "grid_current", DIV100, 1 },
+  { HYBRID, SOLAR_REG_GRIDV_B, "grid_voltage_b", DIV10, 0 },
+  { HYBRID, SOLAR_REG_GRIDA_B, "grid_current_b", DIV100, 0 },
+  { HYBRID, SOLAR_REG_GRIDV_C, "grid_voltage_c", DIV10, 0 },
+  { HYBRID, SOLAR_REG_GRIDA_C, "grid_current_c", DIV100, 0 },
+  { HYBRID, SOFAR_REG_GRIDFREQ, "grid_freq", DIV100, 1 },
+  { HYBRID, SOFAR_REG_BATTW, "battery_power", MUL10, 1 },
+  { HYBRID, SOFAR_REG_BATTV, "battery_voltage", DIV10, 1 },
+  { HYBRID, SOFAR_REG_BATTA, "battery_current", DIV100, 1 },
+  { HYBRID, SOFAR_REG_BATTSOC, "batterySOC", NOCALC, 1 },
+  { HYBRID, SOFAR_REG_BATTTEMP, "battery_temp", NOCALC, 1 },
+  { HYBRID, SOFAR_REG_GRIDW, "grid_power", MUL10, 1 },
+  { HYBRID, SOFAR_REG_LOADW, "consumption", MUL10, 1 },
+  { HYBRID, SOFAR_REG_SYSIOW, "inverter_power", MUL10, 1 },
+  { HYBRID, SOFAR_REG_PVW, "solarPV", MUL10, 1 },
+  { HYBRID, SOLAR_REG_EPS_V, "eps_voltage", NOCALC, 0},
+  { HYBRID, SOLAR_REG_EPS_W, "eps_power", NOCALC, 0},
+  { HYBRID, SOFAR_REG_PVDAY, "today_generation", DIV100, 1 },
+  { HYBRID, SOFAR_REG_EXPDAY, "today_exported", DIV100, 1 },
+  { HYBRID, SOFAR_REG_IMPDAY, "today_purchase", DIV100, 1 },
+  { HYBRID, SOFAR_REG_LOADDAY, "today_consumption", DIV100, 1 },
+  { HYBRID, SOLAR_REG_TOTAL_GEN_HI, "total_gen_hi", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_GEN_LO, "total_gen_lo", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_EXP_HI, "total_exp_hi", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_EXP_LO, "total_exp_lo", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_IMP_HI, "total_imp_hi", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_IMP_LO, "total_imp_lo", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_LOAD_HI, "total_load_hi", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_TOTAL_LOAD_LO, "total_load_lo", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_CHARGDAY, "today_charged", DIV100, 1 },
+  { HYBRID, SOFAR_REG_DISCHDAY, "today_discharged", DIV100, 1 },
+  { HYBRID, SOFAR_REG_RESERVED_1, "reserved_1", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_RESERVED_2, "reserved_2", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_RESERVED_3, "reserved_3", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_RESERVED_4, "reserved_4", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_COUNTDOWN_TIME, "countdown_time", NOCALC, 0 },
+  { HYBRID, SOLAR_REG_ALERT_MSG, "alert_message", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_BATTCYC, "battery_cycles", NOCALC, 1 },
+  { HYBRID, SOFAR_REG_INV_BUSV, "inverter_bus_voltage", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_LLC_BUSV, "llc_bus_voltage", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_BUCKA, "buck_current", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDV_R, "grid_voltage_r", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDA_R, "grid_current_r", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDV_S, "grid_voltage_s", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDA_S, "grid_current_s", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDV_T, "grid_voltage_t", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_GRIDA_T, "grid_current_t", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_PVA, "solarPVAmps", NOCALC, 1 },
+  { HYBRID, SOFAR_REG_BATT_PWR, "battery_power2", NOCALC, 0 },
+  { HYBRID, SOFAR_REG_INTTEMP, "inverter_temp", NOCALC, 1 },
+  { HYBRID, SOFAR_REG_HSTEMP, "inverter_HStemp", NOCALC, 1 },
   { HYDV2, SOFAR2_REG_RUNSTATE, "running_state", NOCALC , 1 },
   { HYDV2, SOFAR2_REG_GRIDV, "grid_voltage", DIV10 , 1 },
   { HYDV2, SOFAR2_REG_GRIDFREQ, "grid_freq", DIV100 , 1 },
@@ -396,6 +429,11 @@ bool modbusError = true;
 #define SEND_INTERVAL 10000
 #define CONCURRENT_SEND_INTERVAL 1500
 #define BATTERYSAVE_INTERVAL 3000
+
+// Models that support concurrent reads
+String concurrentModels[] = {"ME3000", "HYBRID"};
+int numConcurrentModels = sizeof(inverterModels) / sizeof(String);
+bool concurrentReads = false;
 
 // Wemos OLED Shield set up. 64x48, pins D1 and D2
 #include <SPI.h>
@@ -1261,6 +1299,13 @@ int sendPassiveCmd(uint8_t id, uint16_t cmd, uint16_t param, String pubTopic)
   return err;
 }
 
+void sendDebug(String msg)
+{
+  String topic(deviceName);
+  topic += "/debug";
+  sendMqtt(const_cast<char*>(topic.c_str()), msg);
+}
+
 void sendMqtt(char* topic, String msg_str)
 {
   char	msg[1000];
@@ -1767,6 +1812,14 @@ void setup()
   delay(500);
   setup_wifi(); //set wifi and get settings, so first thing to do
 
+  // Determine if reads should be concurrent or not
+  for (int i = 0; i < numModels; i++) {
+      if (concurrentModels[i] == inverterModel) {
+          concurrentReads = true;
+          break;
+      }
+  }
+
   if (tftModel) {
     tft.print("Running inverter model: ");
     if (inverterModel == ME3000) {
@@ -1850,9 +1903,9 @@ void loop()
     mqttReconnect();
   }
 
-  // Fetching data concurrently is only supported on ME3000 for now
-  //Get all data and send to MQTT
-  if (inverterModel == ME3000)
+  // Fetch data concurrently for supported models
+  // Get all data and send to MQTT
+  if (concurrentReads)
   {
     // Pass the index of the first needed register in mqtt_status_reads
     // Pass the amount of registers to read from mqtt_status_reads
